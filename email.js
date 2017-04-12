@@ -10,9 +10,8 @@ router.post('/send', function(req, res, next) {
 
 	substitution = new helper.Substitution("-name-", name)
 		mail.personalizations[0].addSubstitution(substitution)
-
-	console.log(process.env.SENDGRID_API_KEY);
-	var sg = require('sendgrid')('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');
+	
+	var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 	var request = sg.emptyRequest({
 	  method: 'POST',
 	  path: '/v3/mail/send',
